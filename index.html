@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Positions games</title>
+	<link rel="stylesheet" type="text/css" href="main.css"/>
+</head>
+<body>
+	<div class="container">
+		<div class="square cyan">Z-index is:<span class="z-index">auto</span></div>
+		<div class="square magenta">Z-index is:<span class="z-index">auto</span></div>
+		<div class="square yellow">Z-index is:<span class="z-index">auto</span></div>
+		<div class="btn-container">
+			<p>Press a button, get the color up</p>
+			<button>Cyan</button>
+			<button>Magenta</button>
+			<button>Yellow</button>
+		</div>
+	</div>
+	<script>
+		let zIndex = 0;
+		Array.from(document.querySelectorAll('button')).forEach(btn => btn.addEventListener('click', e => {
+			document.querySelector('.' + e.target.textContent.toLowerCase()).style.zIndex = ++zIndex;
+			document.querySelector('.' + e.target.textContent.toLowerCase() + ' .z-index').textContent = zIndex;
+			document.querySelector('.btn-container').style.zIndex = zIndex+1;
+			console.log(zIndex);
+		}))
+	</script>
+</body>
+</html>
